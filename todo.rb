@@ -24,13 +24,24 @@ def handle_list_command
   end
 end
 
+def handle_add_command(sentence)
+  if sentence.blank?
+    puts
+    puts "Task can't be blank."
+    puts
+  else
+    task = TasksController.add sentence
+    task.valid? ? (puts "Appended #{sentence} to your TODO list...") : (puts "Something went wrong please try again.")
+  end
+end
+
 if ARGV.any?
 
   case ARGV[0]
     when "list"
       handle_list_command
     when "add"
-      puts "add"
+      handle_add_command ARGV[1..-1].join(' ')
     when "delete"
       puts "delete"
     when "complete"
