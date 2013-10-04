@@ -25,14 +25,8 @@ def handle_list_command
 end
 
 def handle_add_command(sentence)
-  if sentence.blank?
-    puts
-    puts "Task can't be blank."
-    puts
-  else
-    task = TasksController.add sentence
-    task.valid? ? (puts "Appended #{sentence} to your TODO list...") : (puts "Something went wrong please try again.")
-  end
+  task = TasksController.add sentence
+  task.valid? ? (puts "Appended #{sentence} to your TODO list...") : (puts "Error: #{task.errors.messages[:name].first}")
 end
 
 
