@@ -20,7 +20,7 @@ def handle_list_command
     puts "Woohoo no tasks to complete yet!"
     puts
   else
-    tasks.list.each_with_index { |task, i| puts "#{i}.\t#{task.name}"}
+    tasks.each_with_index { |task, i| puts "#{i+1}.".ljust(4) + task.name }
   end
 end
 
