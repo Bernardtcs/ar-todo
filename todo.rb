@@ -25,8 +25,7 @@ def handle_list_command
 end
 
 def handle_add_command(sentence)
-  task = TasksController.add sentence
-  task.valid? ? (puts "Appended #{sentence} to your TODO list...") : (puts "Error: #{task.errors.messages[:name].first}")
+  puts TasksController.add sentence
 end
 
 def handle_delete_command(task_id)

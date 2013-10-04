@@ -5,7 +5,8 @@ class TasksController
   end
 
   def self.add(sentence)
-    Task.create(name: sentence)
+    task = Task.create(name: sentence)
+    task.valid? ? "Appended #{sentence} to your TODO list..." : "Error: #{task.errors.messages[:name].first}"
   end
 
   # Note this is not the id in the database. This id identifies where on the list the task is.
