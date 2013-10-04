@@ -32,6 +32,10 @@ def handle_delete_command(task_id)
   puts TasksController.delete(task_id.to_i)
 end
 
+def handle_complete_command(task_id)
+  puts TasksController.complete task_id.to_i
+end
+
 
 ### Program execution starts here ###
 
@@ -45,7 +49,7 @@ if ARGV.any?
     when "delete"
       handle_delete_command ARGV[1]
     when "complete"
-      puts "complete"
+      handle_complete_command ARGV[1]
     when "help"
       display_menu
     else
