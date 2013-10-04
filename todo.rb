@@ -46,6 +46,8 @@ if ARGV.any?
       handle_delete_command ARGV[1]
     when "complete"
       puts "complete"
+    when "help"
+      display_menu
     else
       puts "invalid command"
       display_menu
