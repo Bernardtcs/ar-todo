@@ -1,4 +1,4 @@
-class TasksController < ActiveRecord::Base
+class TasksController
 
   def self.list
     Task.all
