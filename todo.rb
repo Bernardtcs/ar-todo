@@ -1,6 +1,30 @@
 require_relative 'config/application'
 require_relative 'app/controllers/tasks_controller'
 
+def execute_todo_app
+  if ARGV.any?
+
+    case ARGV[0]
+      when "list"
+        handle_list_command
+      when "add"
+        handle_add_command ARGV[1..-1].join(' ')
+      when "delete"
+        handle_delete_command ARGV[1]
+      when "complete"
+        handle_complete_command ARGV[1]
+      when "help"
+        display_menu
+      else
+        puts "invalid command"
+        display_menu
+    end
+
+  else
+    display_menu
+  end
+end
+
 def display_menu
   puts
   puts "*" * 100
@@ -42,27 +66,8 @@ end
 
 ### Program execution starts here ###
 
-if ARGV.any?
+execute_todo_app
 
-  case ARGV[0]
-    when "list"
-      handle_list_command
-    when "add"
-      handle_add_command ARGV[1..-1].join(' ')
-    when "delete"
-      handle_delete_command ARGV[1]
-    when "complete"
-      handle_complete_command ARGV[1]
-    when "help"
-      display_menu
-    else
-      puts "invalid command"
-      display_menu
-  end
-
-else
-  display_menu
-end
 
 
 
