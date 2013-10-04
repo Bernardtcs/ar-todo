@@ -29,7 +29,7 @@ def handle_add_command(sentence)
 end
 
 def handle_delete_command(task_id)
-  puts TasksController.delete(task_id.to_i)
+  puts TasksController.delete task_id.to_i
 end
 
 def handle_complete_command(task_id)
