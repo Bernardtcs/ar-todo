@@ -35,6 +35,9 @@ def handle_add_command(sentence)
   end
 end
 
+
+### Program execution starts here ###
+
 if ARGV.any?
 
   case ARGV[0]
