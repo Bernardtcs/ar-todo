@@ -29,6 +29,10 @@ def handle_add_command(sentence)
   task.valid? ? (puts "Appended #{sentence} to your TODO list...") : (puts "Error: #{task.errors.messages[:name].first}")
 end
 
+def handle_delete_command(task_id)
+  puts TasksController.delete(task_id.to_i)
+end
+
 
 ### Program execution starts here ###
 
@@ -40,7 +44,7 @@ if ARGV.any?
     when "add"
       handle_add_command ARGV[1..-1].join(' ')
     when "delete"
-      puts "delete"
+      handle_delete_command ARGV[1]
     when "complete"
       puts "complete"
     else
