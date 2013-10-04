@@ -1,4 +1,5 @@
 require_relative 'config/application'
+require_relative 'app/controllers/tasks_controller'
 
 def display_menu
   puts
@@ -11,11 +12,23 @@ def display_menu
   puts
 end
 
+def handle_list_command
+  tasks = TasksController.list
+
+  if tasks.empty?
+    puts
+    puts "Woohoo no tasks to complete yet!"
+    puts
+  else
+    tasks.list.each_with_index { |task, i| puts "#{i}.\t#{task.name}"}
+  end
+end
+
 if ARGV.any?
 
   case ARGV[0]
     when "list"
-      puts "list"
+      handle_list_command
     when "add"
       puts "add"
     when "delete"
