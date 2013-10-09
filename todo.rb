@@ -7,25 +7,21 @@ def execute_todo_app
       when "list"
         TasksController.list
       when "add"
-        handle_add_command ARGV[1..-1].join(' ')
+        TasksController.add ARGV[1..-1].join(' ')
       when "delete"
         handle_delete_command ARGV[1]
       when "complete"
         handle_complete_command ARGV[1]
       when "help"
-        TasksController.display_menu
+        TasksController.menu
       else
         puts "invalid command"
-        TasksController.display_menu
+        TasksController.menu
     end
 
   else
-    TasksController.display_menu
+    TasksController.menu
   end
-end
-
-def handle_add_command(sentence)
-  puts TasksController.add sentence
 end
 
 def handle_delete_command(task_id)

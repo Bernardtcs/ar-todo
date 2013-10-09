@@ -10,7 +10,7 @@ class TasksView
     puts
   end
 
-  def self.list(tasks)
+  def self.display_list(tasks)
     if tasks.empty?
       puts
       puts "Woohoo no tasks to complete yet!"
@@ -21,5 +21,9 @@ class TasksView
         puts "#{i+1}.".ljust(4) + "[#{completed}] #{task.name}"
       end
     end
+  end
+
+  def self.display_notice(notice)
+    puts notice
   end
 end

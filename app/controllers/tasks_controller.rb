@@ -1,16 +1,20 @@
 class TasksController
 
-  def self.display_menu
+  def self.menu
     TasksView.display_menu
   end
 
   def self.list
-    TasksView.list Task.all
+    TasksView.display_list Task.all
   end
 
   def self.add(sentence)
     task = Task.create(name: sentence)
-    task.valid? ? "Appended #{sentence} to your TODO list..." : "Error: #{task.errors.messages[:name].first}"
+    if task.valid?
+      TasksView.display_notice "Appended #{sentence} to your TODO list..."
+    else
+      TasksView.display_notice "Error: #{task.errors.messages[:name].first}"
+    end
   end
 
   # Note this is not the id in the database. This id identifies where on the list the task is.
