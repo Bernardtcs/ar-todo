@@ -9,4 +9,17 @@ class TasksView
     puts "ruby todo.rb complete NUM_OF_TASK_TO_DELETE \t # Complete a task e.g. ruby todo.rb complete 1"
     puts
   end
+
+  def self.list(tasks)
+    if tasks.empty?
+      puts
+      puts "Woohoo no tasks to complete yet!"
+      puts
+    else
+      tasks.each_with_index do |task, i|
+        completed = task.completed ? 'x' : ' '
+        puts "#{i+1}.".ljust(4) + "[#{completed}] #{task.name}"
+      end
+    end
+  end
 end

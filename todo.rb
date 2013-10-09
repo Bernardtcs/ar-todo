@@ -5,7 +5,7 @@ def execute_todo_app
 
     case ARGV[0]
       when "list"
-        handle_list_command
+        TasksController.list
       when "add"
         handle_add_command ARGV[1..-1].join(' ')
       when "delete"
@@ -13,29 +13,14 @@ def execute_todo_app
       when "complete"
         handle_complete_command ARGV[1]
       when "help"
-        TasksView.display_menu
+        TasksController.display_menu
       else
         puts "invalid command"
-        TasksView.display_menu
+        TasksController.display_menu
     end
 
   else
-    TasksView.display_menu
-  end
-end
-
-def handle_list_command
-  tasks = TasksController.list
-
-  if tasks.empty?
-    puts
-    puts "Woohoo no tasks to complete yet!"
-    puts
-  else
-    tasks.each_with_index do |task, i|
-      completed = task.completed ? 'x' : ' '
-      puts "#{i+1}.".ljust(4) + "[#{completed}] #{task.name}"
-    end
+    TasksController.display_menu
   end
 end
 

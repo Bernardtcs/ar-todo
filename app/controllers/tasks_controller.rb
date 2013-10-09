@@ -1,7 +1,11 @@
 class TasksController
 
+  def self.display_menu
+    TasksView.display_menu
+  end
+
   def self.list
-    Task.all
+    TasksView.list Task.all
   end
 
   def self.add(sentence)
