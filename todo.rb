@@ -1,5 +1,4 @@
 require_relative 'config/application'
-require_relative 'app/controllers/tasks_controller'
 
 def execute_todo_app
   if ARGV.any?
