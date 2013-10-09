@@ -9,7 +9,7 @@ def execute_todo_app
       when "add"
         TasksController.add ARGV[1..-1].join(' ')
       when "delete"
-        handle_delete_command ARGV[1]
+        TasksController.delete ARGV[1].to_i
       when "complete"
         handle_complete_command ARGV[1]
       when "help"
@@ -22,10 +22,6 @@ def execute_todo_app
   else
     TasksController.menu
   end
-end
-
-def handle_delete_command(task_id)
-  puts TasksController.delete task_id.to_i
 end
 
 def handle_complete_command(task_id)

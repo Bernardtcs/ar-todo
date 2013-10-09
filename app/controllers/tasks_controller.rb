@@ -23,9 +23,13 @@ class TasksController
 
     if task
       task = task.destroy
-      task.valid? ? "Deleted '#{task.name}' from your TODO list..." : "Error: Something went wrong. Please try again later."
+      if task.valid?
+        TasksView.display_notice "Deleted '#{task.name}' from your TODO list..."
+      else
+        TasksView.display_notice "Error: Something went wrong. Please try again later."
+      end
     else
-      "Error: invalid task ID provided."
+      TasksView.display_notice "Error: invalid task ID provided."
     end
   end
 
