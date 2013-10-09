@@ -11,21 +11,16 @@ def execute_todo_app
       when "delete"
         TasksController.delete ARGV[1].to_i
       when "complete"
-        handle_complete_command ARGV[1]
+        TasksController.complete ARGV[1].to_i
       when "help"
         TasksController.menu
       else
-        puts "invalid command"
-        TasksController.menu
+        TasksController.invalid_command
     end
 
   else
     TasksController.menu
   end
-end
-
-def handle_complete_command(task_id)
-  puts TasksController.complete task_id.to_i
 end
 
 

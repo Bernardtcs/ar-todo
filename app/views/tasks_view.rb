@@ -10,6 +10,10 @@ class TasksView
     puts
   end
 
+  def self.display_invalid_command
+    puts "Invalid command :/"
+  end
+
   def self.display_list(tasks)
     if tasks.empty?
       puts

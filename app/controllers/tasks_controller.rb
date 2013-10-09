@@ -4,6 +4,11 @@ class TasksController
     TasksView.display_menu
   end
 
+  def self.invalid_command
+    TasksView.display_invalid_command
+    TasksView.display_menu
+  end
+
   def self.list
     TasksView.display_list Task.all
   end
@@ -38,9 +43,13 @@ class TasksController
 
     if task
       update_result = task.update_attributes completed: true
-      update_result ? "Completed '#{task.name}' from your TODO list..." : "Error: Something went wrong. Please try again later."
+      if update_result
+        TasksView.display_notice "Completed '#{task.name}' from your TODO list..."
+      else
+        TasksView.display_notice "Error: Something went wrong. Please try again later."
+      end
     else
-      "Error: invalid task ID provided."
+      TasksView.display_notice "Error: invalid task ID provided."
     end
 
   end
